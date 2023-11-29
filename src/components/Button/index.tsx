@@ -7,19 +7,21 @@ import createHover from "../../assets/plus-hover.svg";
 
 interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
   isTrash?: boolean;
+  type?: "button" | "submit" | "reset";
+  onClick?: () => void;
 }
 
-export function Button({ isTrash }: Readonly<IButton>) {
+export function Button({ isTrash, type = "button", onClick, ...props }: Readonly<IButton>) {
   const [isHover, setIsHover] = useState(false);
 
   return (
     <>
       {isTrash ? (
-        <TrashButton onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} onBlur={() => setIsHover(false)}>
+        <TrashButton type={type} {...props} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)} onClick={onClick}>
           <img src={isHover ? trashHover : trash} alt="trash icon" />
         </TrashButton>
       ) : (
-        <CreateButton>
+        <CreateButton type={type} onClick={onClick} {...props}>
           <p>Criar</p>
           <img src={isHover ? createHover : create} alt="create icon" />
         </CreateButton>

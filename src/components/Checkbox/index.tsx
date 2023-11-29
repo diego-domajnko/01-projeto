@@ -5,14 +5,15 @@ import checkedDefault from "../../assets/checkbox-checked-default.svg";
 import checkedHover from "../../assets/checkbox-checked-hover.svg";
 import { useState } from "react";
 
-interface ICheckbox extends React.InputHTMLAttributes<HTMLInputElement> {
+interface ICheckbox {
   checked: boolean;
+  onClick: () => void;
 }
 
-export function Checkbox({ checked }: Readonly<ICheckbox>) {
+export function Checkbox({ checked, onClick }: Readonly<ICheckbox>) {
   const [isHover, setIsHover] = useState(false);
   return (
-    <CheckboxWrapper>
+    <CheckboxWrapper onClick={onClick}>
       {checked && (
         <img
           onMouseEnter={() => setIsHover(true)}

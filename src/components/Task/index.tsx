@@ -5,14 +5,16 @@ import { TaskWrapper } from "./Task";
 interface ITask {
   children: React.ReactNode;
   isChecked: boolean;
+  handleDelete: () => void;
+  handleCheckbox: () => void;
 }
 
-export function Task({ children, isChecked }: Readonly<ITask>) {
+export function Task({ children, isChecked, handleDelete, handleCheckbox }: Readonly<ITask>) {
   return (
-    <TaskWrapper isDone={isChecked ? "true" : "false"}>
-      <Checkbox checked={isChecked} />
+    <TaskWrapper ischecked={isChecked ? "true" : "false"}>
+      <Checkbox checked={isChecked} onClick={handleCheckbox} />
       <p>{children}</p>
-      <Button isTrash />
+      <Button isTrash onClick={handleDelete} />
     </TaskWrapper>
   );
 }

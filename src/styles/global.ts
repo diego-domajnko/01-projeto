@@ -17,6 +17,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    padding: 4rem 3rem;
+    background-color: ${({ theme }) => theme.gray[600]};
   }
 `;

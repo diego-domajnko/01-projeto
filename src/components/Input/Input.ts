@@ -11,8 +11,6 @@ export const InputWrapper = styled.input<IProps>`
   color: ${({ theme }) => theme.gray[100]};
   padding: 1rem;
   outline: none;
-  max-width: 30rem;
-  width: 80%;
 
   &::placeholder {
     color: ${({ theme }) => theme.gray[300]};
